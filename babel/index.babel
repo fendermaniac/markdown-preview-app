@@ -1,0 +1,94 @@
+function Editor(props) {
+  return (
+    <div>
+      <h1>Editor</h1>
+      <textarea id='editor' value={props.markdown} onInput={props.updateMarkdown}>
+        {props.markdown}
+      </textarea>
+    </div>
+  );
+}
+
+class Preview extends React.Component {
+  createMarkup() {
+    return { __html: marked(this.props.markdown) };
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Preview</h1>
+        <div id="preview" dangerouslySetInnerHTML={this.createMarkup()} />
+      </div>
+    );
+  }
+}
+
+class Markdown extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      markdown: `# Welcome to my React Markdown Previewer!
+This is an H1
+=============
+
+## This is an H2
+
+
+
+This is [an example](http://example.com/ "Title") inline link.
+
+This is a normal paragraph:
+
+    This is a code block.
+
+Inline \`code\` has \`back-ticks around\` it.
+
+*   Red
+*   Green
+*   Blue
+
+> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+> 
+> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+> id sem consectetuer libero luctus adipiscing.
+
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
+
+\`\`\`python
+s = "Python syntax highlighting"
+print s
+\`\`\`
+
+
+![React Logo w/ Text](https://goo.gl/Umyytc)`
+    };
+    this.updateMarkdown = this.updateMarkdown.bind(this);
+    this.renderMarkdown = this.renderMarkdown.bind(this);
+  }
+
+  updateMarkdown(e) {
+    this.setState({ markdown: e.target.value });
+    const rendered = marked(e.target.value);
+    this.setState({ renderedMarkdown: rendered });
+  }
+
+  renderMarkdown() {}
+
+  render() {
+    return (
+      <div className="markdown">
+        <Editor
+          markdown={this.state.markdown}
+          updateMarkdown={this.updateMarkdown}
+          renderMarkdown={this.renderMarkdown}
+        />
+        <Preview markdown={this.state.markdown} />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Markdown />, document.getElementById("root"));

@@ -1,0 +1,33 @@
+body {
+  font-family: 'Share Tech Mono', monospace;
+  background-color: #56b000;
+}
+
+h1 {
+  text-align: center;
+}
+
+.markdown {
+  display: flex;
+}
+
+textarea {
+  background-color: #caff97;
+  min-height: 250px;
+  min-width: 250px;
+  font-size: 1.5em;
+  padding: .5em;
+}
+
+#preview {
+  border: 1px solid black;
+  background: black;
+  color: #7CFC00;
+  margin-left: 5px;
+  padding: 5px;
+  min-height: 250px;
+  min-width: 250px;
+}
+#preview a {
+  color: #007cfc;
+}
