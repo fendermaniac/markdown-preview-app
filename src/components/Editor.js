@@ -3,8 +3,8 @@ import React from 'react';
 const Editor = (props) => {
   return ( 
     <div>
-      <p>Editor component</p>
-      <textarea>{props.markdown}</textarea>
+      <h2 className="title">Editor component</h2>
+      <textarea rows={30} cols={75} onChange={props.onChange}>{props.markdown}</textarea>
     </div>
     
    );

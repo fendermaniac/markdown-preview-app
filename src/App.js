@@ -46,7 +46,7 @@ print s
 renderedMarkdown: ''
   };
 
-  updateMarkdown(e) {
+  updateMarkdown = (e) => {
     this.setState({ markdown: e.target.value });
     const rendered = marked(e.target.value);
     this.setState({ renderedMarkdown: rendered });
@@ -62,8 +62,9 @@ renderedMarkdown: ''
   render() {
     return (
       <div>
+        <h1 className="title">Markdown Previewer</h1>
         <div className="split left">
-          <Editor markdown = {this.state.markdown}/>
+          <Editor onChange={this.updateMarkdown} markdown = {this.state.markdown}/>
         </div>
         <div className="split right">
           <Preview markdown = {this.state.markdown} renderedMarkdown = {this.state.renderedMarkdown}/>

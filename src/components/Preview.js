@@ -4,8 +4,8 @@ import marked from 'marked'
 const Preview = (props) => {
   return ( 
     <div>
-    <p>Preview component</p>
-    {marked(props.markdown)}
+    <h2 className="title">Preview component</h2>
+    <div dangerouslySetInnerHTML={{__html: marked(props.markdown)}} />
     </div>
 
    );
