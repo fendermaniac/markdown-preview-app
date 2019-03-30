@@ -62,7 +62,7 @@ renderedMarkdown: ''
   render() {
     return (
       <div>
-        <h1 className="title">Markdown Previewer</h1>
+
         <div className="split left">
           <Editor onChange={this.updateMarkdown} markdown = {this.state.markdown}/>
         </div>
