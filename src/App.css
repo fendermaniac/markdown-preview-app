@@ -16,6 +16,14 @@ textarea {
   text-align: center;
 }
 
+.main-title {
+  padding-left: 25%
+}
+
+.container {
+  background-color: seagreen;
+}
+
 /* Split the screen in half */
 .split {
   height: 100%;
